@@ -26,19 +26,16 @@ app.use(cookieParser())
 app.use(userRoutes)
 
 
-const port = process.env.PORT || 8000;
+
 
 app.use(express.static(path.join(__dirname, "./client/build")));
-app.get("*", function (_, res) {
-  res.sendFile(
-    path.join(__dirname, "./client/build/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  );
+
+app.get("*", function (req,res) {
+  res.sendFile(path.join(__dirname,"./client/build.index.html"))
 });
 
+const PORT = process.env.PORT || 8000;
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log("Server listening");
 })
