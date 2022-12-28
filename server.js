@@ -1,8 +1,8 @@
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const express = require('express');
-const userController = require('./controller/userController');
 const userRoutes = require('./routes/userRoutes');
+const path = require('path');
 const app = express();
 require("dotenv").config();
 //Data Base 
@@ -28,9 +28,15 @@ app.use(userRoutes)
 
 const port = process.env.PORT || 8000;
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static("client/build"));
-}
+app.use(express.static(path.join(__dirname, "./client/build")));
+app.get("*", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
+});
 
 
 app.listen(port, () => {
