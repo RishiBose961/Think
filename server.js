@@ -26,12 +26,13 @@ app.use(cookieParser())
 app.use(userRoutes)
 
 
-const port = process.env.PORT || 8000;
+
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static("client/build"));
 }
 
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => {
     console.log("Server listening");
