@@ -291,7 +291,7 @@ const userController = {
                 ],
             }
             : {};
-        const posts = await Post.find(keyword).find();
+        const posts = await Post.find(keyword).find().sort({ createdAt: -1 });
         res.send(posts);
     },
 
