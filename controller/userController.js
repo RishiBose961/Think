@@ -335,20 +335,19 @@ const userController = {
                 const newUser = new User({
                     username: name,
                     email,
-                    avatar,
                     companyname: given_name,
                     password: hashPassword
                 });
                 await newUser.save();
                 // sign in the user
                 // refresh token
-                const rf_token = createToken.refresh({ id: user._id });
-                // store cookie
-                res.cookie("_apprftoken", rf_token, {
-                    httpOnly: true,
-                    path: "/api/auth/access",
-                    maxAge: 24 * 60 * 60 * 1000, // 24hrs
-                });
+                // const rf_token = createToken.refresh({ id: user._id });
+                // // store cookie
+                // res.cookie("_apprftoken", rf_token, {
+                //     httpOnly: true,
+                //     path: "/api/auth/access",
+                //     maxAge: 24 * 60 * 60 * 1000, // 24hrs
+                // });
                 // success
                 res.status(200).json({ msg: "Signing with Google success." });
             }

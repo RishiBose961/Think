@@ -22,14 +22,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    followers: {
-        type:Array,
-        default: [],
-    },
-    followings: {
-        type:Array,
-        default: [],
-    }
 },{timestamps: true})
 
 const User = model("User",userSchema)

@@ -59,7 +59,7 @@ const Login = () => {
       localStorage.setItem("_appSignging", true);
       dispatch({ type: "SIGNING" });
     } catch (err) {
-      alert("successfully created");
+      alert(err.response.data.msg)
     }
   };
 
@@ -81,7 +81,7 @@ const Login = () => {
       <p className='text-center uppercase mt-2 font-semibold'>——— or ———</p>
       <div className='text-center w-full'>
         <GoogleLogin
-          clientId={clientId}
+          clientId={process.env.REACT_APP_G_CLIENT_ID}
           render={renderProps => (
             <button  className='bg-slate-200 h-10 rounded-2xl font-bold w-full mt-2 shadow-lg shadow-orange-300' 
             onClick={renderProps.onClick} disabled={renderProps.disabled}><GoogleIcon/> Google</button>
