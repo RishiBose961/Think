@@ -49,6 +49,10 @@ const Login = () => {
     })
   }, [])
 
+  function reloadWindow() {
+    window.location.reload(true)
+  }
+
 
   const responseSuccessGoogle = async (res) => {
 
@@ -58,6 +62,8 @@ const Login = () => {
       // console.log(res);
       localStorage.setItem("_appSignging", true);
       dispatch({ type: "SIGNING" });
+      // reloadWindow()
+      
     } catch (err) {
       alert(err.response.data.msg)
     }
