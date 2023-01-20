@@ -31,7 +31,7 @@ const OpenaIPost = () => {
   const [results, setResults] = useState("")
 
   const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: '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'
   });
 
   const openai = new OpenAIApi(configuration);
