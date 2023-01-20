@@ -32,7 +32,7 @@ const Mnav = () => {
     setTimeout(() => {
       getPosts()
       setLoading(true)
-    }, 3000);
+    }, 1000);
     
   }, [])
 
