@@ -134,7 +134,7 @@ const userController = {
             .populate("postedBy", "username avatar companyname followers following")
             .sort({ createdAt: -1 })
             .then(posts => {
-                res.json({ posts })
+                res.json({ posts})
             })
             .catch(err => {
                 console.log(err);
@@ -294,6 +294,31 @@ const userController = {
         const posts = await Post.find(keyword).find().sort({ createdAt: -1 });
         res.send(posts);
     },
+
+    
+
+    // createOpenaiPost: async (req, res) => {
+    //     try {
+    //         const { title, category, createdby, imageopenai, description } = req.body
+    //         if (!title || !category || !createdby || !description) {
+    //             return res.status(402).json({ error: "Plz add all the fields" })
+    //         }
+
+    //         const post = new Post({
+    //             title,
+    //             category,
+    //             createdby,
+    //             thumbnail,
+    //             description,
+    //             postedBy: req.user.id
+    //         })
+    //         post.save().then(posts => {
+    //             res.json({ post: posts })
+    //         }).catch(error => console.log(error))
+    //     } catch (error) {
+    //         res.status(500).json({ message: error.message })
+    //     }
+    // },
 
     google: async (req, res) => {
         try {

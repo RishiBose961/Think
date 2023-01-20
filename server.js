@@ -20,6 +20,8 @@ mongoose.connect(process.env.MONOGO_URL, {
     }
 })
 
+
+
 app.use(express.json());
 express.urlencoded({ extended: true })
 app.use(cookieParser())

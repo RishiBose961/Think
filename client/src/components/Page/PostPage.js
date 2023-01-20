@@ -6,7 +6,7 @@ import { TabTitle } from '../NewTab/GenerateTitle';
 const PostPage = () => {
   TabTitle("Trend Post - Think")
 
-  const { token,user } = useContext(AuthContext)
+  const { token } = useContext(AuthContext)
   const { id } = useParams("");
   const [inpval, setinpval] = useState([])
   const getdata = async () => {
