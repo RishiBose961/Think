@@ -25,7 +25,9 @@ const Register = () => {
 
   const handleChange = (e) => {
     setData({ ...data, avatar: imgUrl, [e.target.name]: e.target.value });
-    setimgUrl(`https://api.multiavatar.com/${username}.png`)
+    
+    setimgUrl(`https://api.dicebear.com/5.x/avataaars/svg?seed=${username}`)
+    // setimgUrl(`https://api.multiavatar.com/${username}.png`)
     return e.target.value
   }
 
@@ -57,19 +59,19 @@ const Register = () => {
   }
 
 
-  const handleChanges = (e) => {
-    setinputVal(() => {
-      setimgUrl(`https://api.multiavatar.com/${e.target.value}.png`)
-      return e.target.value
+  // const handleChanges = (e) => {
+  //   setinputVal(() => {
+  //     setimgUrl(`https://api.multiavatar.com/${e.target.value}.png`)
+  //     return e.target.value
 
-    })
-    // console.log(inputVal);
-  }
+  //   })
+  //   // console.log(inputVal);
+  // }
 
   return (
     <div>
       <div class="flex justify-center mb-2">
-        <Avatar alt={inputVal} sx={{ width: 56, height: 56 }} src={imgUrl} />
+        <Avatar alt={inputVal} sx={{ width: 56, height: 56 ,backgroundColor:"grey"}} src={imgUrl} />
       </div>
       <TextField
         onChange={handleChange}

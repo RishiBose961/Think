@@ -8,6 +8,7 @@ import Select from '@mui/material/Select';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { TabTitle } from '../NewTab/GenerateTitle';
+import SyncIcon from '@mui/icons-material/Sync';
 
 const Post = () => {
   TabTitle('Create Your Own BLOG')
@@ -21,6 +22,9 @@ const Post = () => {
   const [thumbnail, setthumbnail] = useState("")
   const [description, setDescription] = useState("")
   const [opens, setOpens] = React.useState(false);
+  const [Loading, setLoading] = useState(false)
+  const [success, setSuccess] = React.useState(false);
+
 
 
   //image preview
@@ -79,7 +83,7 @@ const Post = () => {
         })
       }).then(res => res.json())
         .then(data => {
-          console.log(data);
+          // console.log(data);
           if (data.error) {
             alert("Something went wrong")
           }
@@ -93,6 +97,8 @@ const Post = () => {
     }
 
   }, [url])
+
+
 
   function redirects() {
     setTimeout(() => {
@@ -114,6 +120,7 @@ const Post = () => {
       .then(resp => resp.json())
       .then(data => {
         setUrl(data.url)
+        setLoading(true)
         // console.log(data);
       })
       .catch(err => {
@@ -134,8 +141,7 @@ const Post = () => {
 
   return (
     <div>
-      <p className='mt-5 mx-2 text-2xl font-semibold'>Create Your Own BLOG</p>
-      <hr />
+      <p className='mt-2 mx-2 text-2xl font-semibold'>Create Your Own BLOG</p>
       <div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div class="col-span-2">
@@ -211,10 +217,13 @@ const Post = () => {
             </div>
 
             <div className='flex justify-center lg:justify-end'>
-              <button disabled={isLimit}
-                onClick={() => postDetails()}
-                className='bg-sky-400 mt-5 w-24 h-10 rounded-2xl shadow-lg shadow-sky-400
-                      hover:bg-lime-400 font-bold disabled:bg-gray-300'>Submit</button>
+            {
+              Loading? <button className='bg-gradient-to-r from-cyan-500 to-amber-500 h-12 w-20 rounded-xl font-bold'>
+                <SyncIcon fontSize='large' className='animate-spin' />wait..
+              </button>:<button onClick={() => postDetails()} className='bg-gradient-to-r from-cyan-500 to-amber-500 h-12 w-20 rounded-xl font-bold'>Done</button>
+            }
+              
+             
             </div>
 
 

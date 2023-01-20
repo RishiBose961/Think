@@ -71,7 +71,7 @@ export default function Avaterchange({ user }) {
   return (
     <div>
 
-      <img src={user.avatar} alt='loading failed' onClick={handleClickOpen} className='h-48 mt-4 rounded-full' />
+      <img src={user.avatar} alt='loading failed' onClick={handleClickOpen} className='h-48 mt-4 rounded-full bg-slate-300' />
 
       <Dialog
         open={open}

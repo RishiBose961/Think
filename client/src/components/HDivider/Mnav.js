@@ -116,7 +116,7 @@ const Mnav = () => {
               <div className='bg-stone-300 rounded-xl mb-5' key={index}>
                 <div className='mx-2 pt-2 pb-2'>
                   <img src={post.thumbnail}
-                    alt='loading' className='rounded-xl w-full h-96 mb-2 ring-1 ring-zinc-900' />
+                    alt='loading' className='rounded-xl w-full h-96 mb-2 ring-1 ring-zinc-900' loading='lazy' />
                     <hr/>
                   <div className='mt-3 flex justify-between'>
                   {/* <Link to={`usersearch/${post._id}`}> */}
