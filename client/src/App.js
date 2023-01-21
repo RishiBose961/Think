@@ -14,7 +14,6 @@ import Info from './components/Info/Info';
 import PostPage from './components/Page/PostPage';
 import TreandingPost from './components/GallerySearch/TreandingPost';
 import SearchUser from './components/Info/SearchUser';
-import SelectPost from './components/posts/SelectPost';
 
 
 
@@ -57,7 +56,7 @@ function App() {
         <Navpre/>
         <Routes>
           <Route path='/' element={<Home />} />
-        <Route path='/posts' element={isLoggedIn === true ? <SelectPost/>:<LoginRegister/>} />
+        <Route path='/posts' element={isLoggedIn === true ? <Post/>:<LoginRegister/>} />
           <Route path='/fav' element={isLoggedIn === true ? <Favorite />:<LoginRegister/>} />
           <Route path='/search' element={isLoggedIn === true ? <Search />:<LoginRegister/>} />
           <Route path='/trending' element={<TreandingPost />} />

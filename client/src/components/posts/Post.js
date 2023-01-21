@@ -144,7 +144,7 @@ const Post = () => {
       <p className='mt-2 mx-2 text-2xl font-semibold'>Create Your Own BLOG</p>
       <div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div class="col-span-2">
+          <div class="col-span-2 lg:mt-8">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-5 mx-2">
               <div class="col-span-1 lg:col-span-2">
                 <TextField label="Title" value={title} type="text" fullWidth onChange={(e) => setTitle(e.target.value)} />
