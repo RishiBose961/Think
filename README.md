@@ -34,6 +34,9 @@ PROFILE PAGE
 CREATE POST PAGE
 ![Logo](https://firebasestorage.googleapis.com/v0/b/waoa-f8825.appspot.com/o/Capture3.PNG?alt=media&token=c3727edf-69be-4a4b-8d0a-3491f9d883fc)
 
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FsiNCjEXw2wVQ4udFMnRF1p%2FUntitled%3Fnode-id%3D0%253A1%26t%3DRycrf0DBXLz1Rkql-1" allowfullscreen></iframe>
+
+
 ## Support
 
 For support, email rishibose1901@gmail.com or 
