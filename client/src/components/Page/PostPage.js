@@ -34,7 +34,7 @@ const PostPage = () => {
     getdata();
   }, [])
 
-  
+
   // const unfollowUser = (id) => {
   //   fetch('/api/auth/unfollow', {
   //     method: 'put',
@@ -65,7 +65,21 @@ const PostPage = () => {
 
   return (
     <div>
-      <p className='text-2xl font-bold mt-3'>{inpval.title}</p>
+      <div className='bg-amber-400 rounded-xl mb-4'>
+        <p className='text-2xl mx-2'>{inpval.title}</p>
+
+      </div>
+      <div>
+        <img className="float-left h-96 mr-4 mb-2" src={inpval.thumbnail} alt="loading" />
+        <p className='lg:mx-2 bg-lime-400'>{inpval.category}</p>
+        <p className='text-lg mt-2'>{inpval.description} <span className='font-bold bg-slate-300'>{inpval.createdAt}</span></p>
+      </div>
+
+
+
+
+
+      {/* <p className='text-2xl font-bold mt-3'>{inpval.title}</p>
       <div className='flex justify-center'>
         <img src={inpval.thumbnail} className="text-xl rounded-xl" />
       </div>
@@ -74,21 +88,15 @@ const PostPage = () => {
         <button className='bg-slate-500 w-24 rounded-xl uppercase' onClick={() => { unfollowUser(inpval?.postedBy._id) }}>Subscribe</button>
         : <button className='bg-amber-500 w-24 rounded-xl uppercase' onClick={() => { followUser(inpval?.postedBy._id) }}>Subscribe</button>
       } */}
-      <div className='bg-amber-400 mt-2 h-20 pt-6 mx-1 lg:mx-2 rounded-lg flex justify-between'>
+      {/* <div className='bg-amber-400 mt-2 h-20 pt-6 mx-1 lg:mx-2 rounded-lg flex justify-between'>
         <div>
-          <p className='mx-2'>{inpval.category}</p>
+          
         </div>
-        <div>
-          <p className='mx-2 capitalize'>Written By : {inpval.createdby}</p>
-        </div>
-      </div>
-      <div>
-        <p className='text-lg font-semibold mx-1 lg:mx-3 mt-2 underline'>Description</p>
-        <p className='text-lg font-normal mx-1 lg:mx-3'>{inpval.description}</p>
+        
       </div>
       <div>
         <p className='text-lg font-semibold mx-1 lg:mx-3 mt-2'>{inpval.createdAt}</p>
-      </div>
+      </div>  */}
     </div>
   )
 }

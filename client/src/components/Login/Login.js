@@ -70,7 +70,7 @@ const Login = () => {
   };
 
   const responseErrorGoogle = () => {
-    alert("there Was an error")
+    alert("Authentication failed")
   }
 
 
