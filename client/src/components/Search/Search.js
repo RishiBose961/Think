@@ -24,8 +24,6 @@ const Search = () => {
       })
   }
 
-  //  console.log(userSearch);
-
   return (
     <div className=''>
       <div className='mt-2 bg-amber-300 rounded-xl'>
