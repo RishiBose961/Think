@@ -53,7 +53,6 @@ function App() {
     <div className='container mx-auto'>
       <BrowserRouter>
         <Header />
-        <Navpre/>
         <Routes>
           <Route path='/' element={<Home />} />
         <Route path='/posts' element={isLoggedIn === true ? <Post/>:<LoginRegister/>} />
