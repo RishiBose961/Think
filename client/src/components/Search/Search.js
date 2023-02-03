@@ -39,7 +39,14 @@ const Search = () => {
           text-black focus:outline-none h-16 mx-2' />
       </div>
       <div>
-        <Sreading userSearch={userSearch} />
+      {
+        search.length > 0 ? <Sreading userSearch={userSearch} />:
+        <div className='flex justify-center'>
+        <p className='mt-3 font-semibold text-[20px]'>Search to Found Think</p>
+        </div>
+        
+      }
+       
       </div>
     </div>
   )

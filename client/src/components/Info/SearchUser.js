@@ -6,7 +6,7 @@ import { TabTitle } from '../NewTab/GenerateTitle';
 
 const SearchUser = () => {
     TabTitle('Search - Think')
-    const { token, user, dispatch } = useContext(AuthContext)
+    const { token } = useContext(AuthContext)
     // const [showFollow, setShowFollow] = useState(true)
     const { id } = useParams("");
     const [inpval, setinpval] = useState([])
