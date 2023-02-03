@@ -23,7 +23,6 @@ const Search = () => {
         setUserSearch(results.user)
       })
   }
-
   return (
     <div className=''>
       <div className='mt-2 bg-amber-300 rounded-xl'>
