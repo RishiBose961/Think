@@ -24,7 +24,7 @@ const Search = () => {
       })
   }
 
-   console.log(userSearch);
+   //console.log(userSearch);
 
   return (
     <div className=''>
