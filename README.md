@@ -17,7 +17,7 @@ MONGO DB
 
 WEBSITE LINK
 
-https://thinks.cyclic.app/
+https://think.cyclic.app/
 
 GITHUB LINK...
 
