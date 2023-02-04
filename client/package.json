@@ -19,7 +19,9 @@
     "react-google-login": "^5.2.2",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
+    "react-share": "^4.4.1",
     "swiper": "^8.4.5",
+    "timeago.js": "^4.0.0-beta.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
