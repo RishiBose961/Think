@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@mui/material/Snackbar';
 import LoadingScreen from '../Page/LoadingScreen';
 import MessageTrending from '../GallerySearch/MessageTrending';
+import ShareLink from './ShareLink';
 
 
 const Mnav = () => {
@@ -161,8 +162,10 @@ const Mnav = () => {
                           }<span>{formatter.format(post.likes.length)}</span>
                         </> : <LoginRegister />
                       }
+                    
                       <PlaylistAddIcon fontSize='large' sx={{ mx: 1 }} />
                       <Link to={`postview/${post._id}`}><ExitToAppIcon fontSize='large' color='info' className='cursor-pointer' /></Link>
+                    
                     </div>
                   </div>
 
@@ -176,7 +179,7 @@ const Mnav = () => {
                         <p>{post.description.substring(0, 115)}
                           <Link to={`postview/${post._id}`}><span className='text-sm cursor-pointer underline ml-3 underline-offset-3 text-red-500'>Read More..</span></Link></p>
                       </div>
-
+                      
                     </div>
                   </div>
                 </div>
