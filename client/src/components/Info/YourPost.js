@@ -40,8 +40,12 @@ const YourPost = () => {
                             return (
                                 <>
                                     <Link to={`/postview/${req._id}`}>
-                                        <div className='mt-4 hover:bg-gradient-to-tr from-slate-400 to-amber-400 relative rounded-xl cursor-pointer ring-1 ring-zinc-900 shadow-lg shadow-teal-400 h-fit '>
+                                        <div className='mt-4 hover:bg-gradient-to-tr rounded-xl 
+                                        cursor-pointer ring-1 ring-zinc-900 shadow-lg shadow-teal-400 h-fit group relative'>
                                             <img src={req.thumbnail} alt='Something Went Wrong' className='text-center rounded-xl object-cover mix-blend-overlay' />
+                                            <div className='group-hover:flex flex-col max-h-[94.5%] hidden absolute bottom-0 left-0 right-0 bg-white m-2 p-4 rounded-full'>
+                                                <p className='mx-auto'>{req.title}</p>
+                                            </div>
                                         </div>
                                     </Link>
                                 </>

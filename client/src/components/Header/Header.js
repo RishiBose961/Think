@@ -19,7 +19,7 @@ const Header = () => {
     }
 }
 
-console.log(user);
+// console.log(user);
   return (
     <div className='h-14'>
       <div className='flex justify-between pt-3'>

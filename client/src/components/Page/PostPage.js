@@ -87,13 +87,13 @@ const PostPage = () => {
             <p className='text-2xl mx-2'>{inpval.title}</p>
           </div>
           <div>
-            <img className="h-96 mr-4 mb-2" src={inpval.thumbnail} alt="loading" />
+            <img className="h-96 mr-4 mb-2 ring-2 ring-black rounded-xl" src={inpval.thumbnail} alt="loading" />
             <p className='lg:mx-2 bg-lime-400'>{inpval.category}</p>
             <p className='text-lg mt-2'>{inpval.description}</p>
           </div>
           <div className='ring-2 mt-10 rounded-xl ring-black'>
             <div className='flex justify-between'>
-              <button className='bg-slate-300 w-full rounded-l-xl cursor-default'><ThumbUpIcon color='error'/> {formatter.format(inpval.likes?.length*1000)}</button>
+              <button className='bg-slate-300 w-full rounded-l-xl cursor-default'><ThumbUpIcon color='error'/> {formatter.format(inpval.likes?.length)}</button>
               <ShareModel linku={inpval._id} description={inpval.title}/>
               <button className='hover:bg-slate-300 w-full rounded-r-xl cursor-default'>{format(inpval.createdAt)}</button>
             </div>
