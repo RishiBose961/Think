@@ -12,8 +12,8 @@ import Favorite from './components/Fav/Favorite';
 import Search from './components/Search/Search';
 import Info from './components/Info/Info';
 import PostPage from './components/Page/PostPage';
-import TreandingPost from './components/GallerySearch/TreandingPost';
 import SearchUser from './components/Info/SearchUser';
+import Errors from './components/404/error';
 
 
 
@@ -58,10 +58,10 @@ function App() {
         <Route path='/posts' element={isLoggedIn === true ? <Post/>:<LoginRegister/>} />
           <Route path='/fav' element={isLoggedIn === true ? <Favorite />:<LoginRegister/>} />
           <Route path='/search' element={isLoggedIn === true ? <Search />:<LoginRegister/>} />
-          <Route path='/trending' element={<TreandingPost />} />
           <Route path='/personal' element={isLoggedIn === true ? <Info />:<LoginRegister/>} />
           <Route path='/postview/:id' element={isLoggedIn === true ? <PostPage />:<LoginRegister/>} />
           <Route path='/usersearch/:id' element={isLoggedIn === true ? <SearchUser />:<LoginRegister/>} />
+          <Route path='*' element={<Errors/>} />
         </Routes>
 
       </BrowserRouter>
