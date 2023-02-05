@@ -146,7 +146,10 @@ const MessageTrending = () => {
                                                 </div>
                                             </>
                                         }
-                                    </> : <LoginRegister />
+                                    </> :
+                                        <div className='group-hover:flex flex-col max-h-[94.5%] hidden absolute top-0  right-1 bg-black m-2 p-4 rounded-full text-white'>
+                                            <LoginRegister />
+                                        </div>
                                 }
                                 {/* <div className='group-hover:flex flex-col max-h-[94.5%] hidden absolute top-0  right-1 bg-black m-2 p-4 rounded-full'>
                                     <FavoriteBorderIcon fontSize='medium' className='text-white text-[14px] text-left' />
