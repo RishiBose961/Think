@@ -50,7 +50,7 @@ const Mnav = () => {
   }, [])
 
 
-
+  //like the post from the from .slice(0,3)
   const likePost = (id) => {
     fetch('/api/auth/like', {
       method: "put",
@@ -78,8 +78,38 @@ const Mnav = () => {
         console.log(err)
       })
   }
+ //like the post from the from .slice(4)
+  const likePosts = (id) => {
+    fetch('/api/auth/like', {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      },
+      body: JSON.stringify({
+        postId: id
+      })
+    }).then(res => res.json())
+      .then(result => {
+        // console.log(result);
+        const newData = datas.map((item) => {
+          if (item._id == result._id) {
+            return result
+          } else {
+            return item
+          }
+        })
+        setDatas(newData)
+        setOpens(true);
+
+      }).catch(err => {
+        console.log(err)
+      })
+  }
+
 
   // console.log(data);
+  //unlike the post from the from .slice(0,3)
   const unlikePost = (id) => {
     fetch('/api/auth/dislike', {
       method: "put",
@@ -100,6 +130,33 @@ const Mnav = () => {
           }
         })
         setData(newData)
+        setopenUNLIKE(true);
+      }).catch(err => {
+        console.log(err)
+      })
+  }
+
+  //unlike the post from the from .slice(4)
+  const unlikePosts = (id) => {
+    fetch('/api/auth/dislike', {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      },
+      body: JSON.stringify({
+        postId: id
+      })
+    }).then(res => res.json())
+      .then(result => {
+        const newData = datas.map(item => {
+          if (item._id == result._id) {
+            return result
+          } else {
+            return item
+          }
+        })
+        setDatas(newData)
         setopenUNLIKE(true);
       }).catch(err => {
         console.log(err)
@@ -214,7 +271,7 @@ const Mnav = () => {
                       {
                         isLoggedIn === true ? <>
                           {post.likes.includes(user._id) ? <>
-                            <ThumbUpIcon sx={{ mx: 1 }} className="cursor-pointer" color="error" onClick={() => { unlikePost(post._id) }} />
+                            <ThumbUpIcon sx={{ mx: 1 }} className="cursor-pointer" color="error" onClick={() => { unlikePosts(post._id) }} />
                             <Snackbar
                               open={openUNLIKE}
                               autoHideDuration={3000}
@@ -223,7 +280,7 @@ const Mnav = () => {
                             />
                           </>
                             : <>
-                              <ThumbUpOffAltIcon sx={{ mx: 1 }} className="cursor-pointer" onClick={() => { likePost(post._id) }} />
+                              <ThumbUpOffAltIcon sx={{ mx: 1 }} className="cursor-pointer" onClick={() => { likePosts(post._id) }} />
                               <Snackbar
                                 open={opens}
                                 autoHideDuration={2000}
