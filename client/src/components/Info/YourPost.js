@@ -24,7 +24,7 @@ const YourPost = () => {
         setTimeout(() => {
             getPosts()
             setLoading(true)
-        }, 3000)
+        }, 2000)
     }, [])
     // console.log(data);
 
