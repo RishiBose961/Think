@@ -14,6 +14,7 @@ import Info from './components/Info/Info';
 import PostPage from './components/Page/PostPage';
 import SearchUser from './components/Info/SearchUser';
 import Errors from './components/404/error';
+import UpdateInfo from './components/Info/UpdateInfo';
 
 
 
@@ -61,6 +62,7 @@ function App() {
           <Route path='/personal' element={isLoggedIn === true ? <Info />:<LoginRegister/>} />
           <Route path='/postview/:id' element={isLoggedIn === true ? <PostPage />:<LoginRegister/>} />
           <Route path='/usersearch/:id' element={isLoggedIn === true ? <SearchUser />:<LoginRegister/>} />
+          <Route path='/update/v1/info' element={isLoggedIn === true ? <UpdateInfo />:<LoginRegister/>} />
           <Route path='*' element={<Errors/>} />
         </Routes>
 
