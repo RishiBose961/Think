@@ -103,14 +103,11 @@ const Post = () => {
   }, [url])
 
 
-
   function redirects() {
     setTimeout(() => {
       history('/')
     }, 3000);
   }
-
-
 
   const postDetails = async () => {
     try {
@@ -130,8 +127,6 @@ const Post = () => {
       console.log(error)
     }
   }
-
-  // console.log(url);
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -256,7 +251,7 @@ const Post = () => {
             {
               uploaded && (
               <>
-              <div className='flex justify-end mt-10 mb-2'>
+              <div className='flex justify-end mt-10 mb-3'>
               <p>{`${uploaded} %`}</p>
               </div>
               <LinearProgress variant="determinate" color='warning' value={uploaded} />
