@@ -121,8 +121,6 @@ const Post = () => {
         }
       })
       setUrl(res.data.url)
-
-      // console.log(data);
     } catch (error) {
       console.log(error)
     }
