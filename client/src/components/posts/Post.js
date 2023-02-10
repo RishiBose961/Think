@@ -9,6 +9,8 @@ import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { TabTitle } from '../NewTab/GenerateTitle';
 import SyncIcon from '@mui/icons-material/Sync';
+import axios from 'axios'
+import LinearProgress from '@mui/material/LinearProgress';
 
 const Post = () => {
   TabTitle('Create Your Own BLOG')
@@ -23,12 +25,14 @@ const Post = () => {
   const [description, setDescription] = useState("")
   const [opens, setOpens] = React.useState(false);
   const [Loading, setLoading] = useState(false)
-  const [success, setSuccess] = React.useState(false);
+
 
 
 
   //image preview
   const [selectedImage, setSelectedImage] = useState()
+  const [uploaded, setUploaded] = useState()
+
   const imageChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       setSelectedImage(e.target.files[0])
@@ -108,26 +112,26 @@ const Post = () => {
 
 
 
-  const postDetails = () => {
-    const data = new FormData()
-    data.append("file", thumbnail)
-    data.append("upload_preset", "fineblogs")
-    data.append("cloud_name", "dbsc0ml5m")
-    fetch("https://api.cloudinary.com/v1_1/dbsc0ml5m/image/upload", {
-      method: "post",
-      body: data
-    })
-      .then(resp => resp.json())
-      .then(data => {
-        setUrl(data.url)
-        setLoading(true)
-        // console.log(data);
+  const postDetails = async () => {
+    try {
+      const data = new FormData()
+      data.append("file", thumbnail)
+      data.append("upload_preset", "fineblogs")
+      data.append("cloud_name", "dbsc0ml5m")
+      const res = await axios.post("https://api.cloudinary.com/v1_1/dbsc0ml5m/image/upload", data, {
+        onUploadProgress: (data) => {
+          setUploaded(Math.round((data.loaded / data.total) * 100));
+        }
       })
-      .catch(err => {
-        console.log(err)
-      })
+      setUrl(res.data.url)
 
+      console.log(data);
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  // console.log(url);
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -217,13 +221,13 @@ const Post = () => {
             </div>
 
             <div className='flex justify-center lg:justify-end'>
-            {
-              Loading? <button className='bg-gradient-to-r from-cyan-500 to-amber-500 h-12 w-20 rounded-xl font-bold'>
-                <SyncIcon fontSize='large' className='animate-spin' />wait..
-              </button>:<button onClick={() => postDetails()} className='bg-gradient-to-r from-cyan-500 to-amber-500 h-12 w-20 rounded-xl font-bold'>Done</button>
-            }
-              
-             
+              {
+                Loading ? <button className='bg-gradient-to-r from-cyan-500 to-amber-500 h-12 w-20 rounded-xl font-bold'>
+                  <SyncIcon fontSize='large' className='animate-spin' />wait..
+                </button> : <button onClick={() => postDetails()} className='bg-gradient-to-r from-cyan-500 to-amber-500 h-12 w-20 rounded-xl font-bold'>Done</button>
+              }
+
+
             </div>
 
 
@@ -249,6 +253,15 @@ const Post = () => {
               onClose={handleClose}
               message="SuccessFully Post wait for 3 sec"
             />
+            {
+              uploaded && (
+              <>
+              <div className='flex justify-end mt-10 mb-2'>
+              <p>{`${uploaded} %`}</p>
+              </div>
+              <LinearProgress variant="determinate" color='warning' value={uploaded} />
+              </>
+            )}
           </div>
         </div>
       </div>
