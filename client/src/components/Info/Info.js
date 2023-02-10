@@ -3,13 +3,13 @@ import { AuthContext } from '../../context/AuthContext'
 import YourPost from './YourPost'
 import { TabTitle } from '../NewTab/GenerateTitle'
 import { Link } from 'react-router-dom'
-
+import Adsvistment from '../../Ads/Adsvistment'
 
 
 const Info = () => {
   TabTitle('Personal - Think')
 
-  const { user} = React.useContext(AuthContext)
+  const { user } = React.useContext(AuthContext)
 
 
   return (
@@ -27,6 +27,10 @@ const Info = () => {
       <div className='flex justify-end mt-3'>
         <Link to='/update/v1/info'>
           <button className='bg-red-400 w-24 h-10 rounded-2xl hover:bg-amber-300'>Update..</button>
+        </Link>
+
+        <Link to='#'>
+          <Adsvistment />
         </Link>
       </div>
       <div>{

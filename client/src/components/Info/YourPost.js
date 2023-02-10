@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import LinearProgress from '@mui/material/LinearProgress';
 import { Link } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CreateIcon from '@mui/icons-material/Create';
+
 
 const YourPost = () => {
     const { token } = useContext(AuthContext)
@@ -42,6 +45,12 @@ const YourPost = () => {
                                     <Link to={`/postview/${req._id}`}>
                                         <div className='mt-4 hover:bg-gradient-to-tr rounded-xl 
                                         cursor-pointer ring-1 ring-zinc-900 shadow-lg shadow-teal-400 h-fit group relative'>
+                                         <div className='group-hover:flex flex-col max-h-[94.5%] hidden absolute top-0 right-0 bg-white m-2 p-4 rounded-full'>
+                                                <button><DeleteIcon/></button>
+                                            </div>
+                                            <div className='group-hover:flex flex-col max-h-[94.5%] hidden absolute top-0 right-16 bg-white m-2 p-4 rounded-full'>
+                                                <button><CreateIcon/></button>
+                                            </div>
                                             <img src={req.thumbnail} alt='Something Went Wrong' className='text-center rounded-xl object-cover mix-blend-overlay' />
                                             <div className='group-hover:flex flex-col max-h-[94.5%] hidden absolute bottom-0 left-0 right-0 bg-white m-2 p-4 rounded-full'>
                                                 <p className='mx-auto'>{req.title}</p>

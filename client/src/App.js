@@ -15,6 +15,7 @@ import PostPage from './components/Page/PostPage';
 import SearchUser from './components/Info/SearchUser';
 import Errors from './components/404/error';
 import UpdateInfo from './components/Info/UpdateInfo';
+import AdvistPage from './Ads/AdvistPage';
 
 
 
@@ -22,7 +23,7 @@ import UpdateInfo from './components/Info/UpdateInfo';
 function App() {
   const { dispatch, token, isLoggedIn } = useContext(AuthContext)
 
- 
+
   //get ac token
   useEffect(() => {
     const _appSignging = localStorage.getItem("_appSignging");
@@ -56,14 +57,15 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
-        <Route path='/posts' element={isLoggedIn === true ? <Post/>:<LoginRegister/>} />
-          <Route path='/fav' element={isLoggedIn === true ? <Favorite />:<LoginRegister/>} />
-          <Route path='/search' element={isLoggedIn === true ? <Search />:<LoginRegister/>} />
-          <Route path='/personal' element={isLoggedIn === true ? <Info />:<LoginRegister/>} />
-          <Route path='/postview/:id' element={isLoggedIn === true ? <PostPage />:<LoginRegister/>} />
-          <Route path='/usersearch/:id' element={isLoggedIn === true ? <SearchUser />:<LoginRegister/>} />
-          <Route path='/update/v1/info' element={isLoggedIn === true ? <UpdateInfo />:<LoginRegister/>} />
-          <Route path='*' element={<Errors/>} />
+          <Route path='/posts' element={isLoggedIn === true ? <Post /> : <LoginRegister />} />
+          <Route path='/fav' element={isLoggedIn === true ? <Favorite /> : <LoginRegister />} />
+          <Route path='/search' element={isLoggedIn === true ? <Search /> : <LoginRegister />} />
+          <Route path='/personal' element={isLoggedIn === true ? <Info /> : <LoginRegister />} />
+          <Route path='/postview/:id' element={isLoggedIn === true ? <PostPage /> : <LoginRegister />} />
+          <Route path='/usersearch/:id' element={isLoggedIn === true ? <SearchUser /> : <LoginRegister />} />
+          <Route path='/update/v1/info' element={isLoggedIn === true ? <UpdateInfo /> : <LoginRegister />} />
+          <Route path='/personal/ads' element={isLoggedIn === true ? <AdvistPage /> : <LoginRegister />} />
+          <Route path='*' element={<Errors />} />
         </Routes>
 
       </BrowserRouter>
