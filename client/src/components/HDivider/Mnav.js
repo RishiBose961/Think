@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@mui/material/Snackbar';
 import LoadingScreen from '../Page/LoadingScreen';
 import MessageTrending from '../GallerySearch/MessageTrending';
-import ShareLink from './ShareLink';
+
 
 
 const Mnav = () => {

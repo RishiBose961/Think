@@ -35,7 +35,7 @@ export default function Adsvistment() {
                             </Menu.Item>
                             <Menu.Item>
                                 {({ active }) => (
-                                    <Link to='/update/v1/info'>
+                                    <Link to='/updateinfo'>
                                         <button
                                             className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -49,7 +49,7 @@ export default function Adsvistment() {
                         <div className="px-1 py-1">
                             <Menu.Item>
                                 {({ active }) => (
-                                    <Link to='/personal/ads'>
+                                    <Link to='/ads'>
                                         <button
                                             className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -76,13 +76,15 @@ export default function Adsvistment() {
                         <div className="px-1 py-1">
                             <Menu.Item>
                                 {({ active }) => (
+                                    <Link to='/wellbring'>
                                     <button
                                         className={`${active ? 'bg-violet-500 text-white' : 'text-gray-900'
                                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                     >
 
-                                        About
+                                        Wellbring
                                     </button>
+                                    </Link>
                                 )}
                             </Menu.Item>
                         </div>

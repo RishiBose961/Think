@@ -17,6 +17,7 @@ route.put('/api/auth/user_avatar',auth,userController.updatepic);
 route.get('/api/auth/getsinglepost/:id',auth,userController.getIndividualpost);
 route.get('/api/auth/getsingleuser/:id',userController.getuserid);
 route.post('/api/auth/searchuser',userController.allSearchUser)
+route.delete('/api/auth/deletepost/:profileId',auth, userController.deleteprofileImage);
 route.get('/api/auth/getpost',userController.SpecificPost)
 route.post('/api/auth/google_signing',userController.google);
 route.get('/api/auth/signout', userController.signout);

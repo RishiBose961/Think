@@ -245,6 +245,26 @@ const userController = {
             })
     },
 
+    deleteprofileImage: async (req, res) => {
+        Post.findOne({ _id: req.params.profileId })
+            .populate("postedBy", "_id")
+            .exec((err, post) => {
+                if (err || !post) {
+                    return res.status(422).json({ error: err })
+                }
+                if (post.postedBy._id.toString() === req.user.id.toString()) {
+                    post.remove()
+                        .then(result => {
+                            res.json(result)
+                        }).catch(err => {
+                            console.log(err)
+                        })
+                }
+            })
+    },
+
+
+
     // followuser: async(req, res)=>{
     //     User.findByIdAndUpdate(req.body.followId,{
     //         $push:{followers:req.user.id}

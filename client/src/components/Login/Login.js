@@ -8,6 +8,7 @@ import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import GoogleIcon from '@mui/icons-material/Google';
 
+
 const initialState = {
   email: '',
   password: ''
@@ -63,7 +64,7 @@ const Login = () => {
       localStorage.setItem("_appSignging", true);
       dispatch({ type: "SIGNING" });
       // reloadWindow()
-      
+
     } catch (err) {
       alert(err.response.data.msg)
     }
@@ -73,6 +74,9 @@ const Login = () => {
     alert("Authentication failed")
   }
 
+  const responseFacebook = (response) => {
+    console.log(response);
+  }
 
 
 
@@ -89,8 +93,8 @@ const Login = () => {
         <GoogleLogin
           clientId={process.env.REACT_APP_G_CLIENT_ID}
           render={renderProps => (
-            <button  className='bg-slate-200 h-10 rounded-2xl font-bold w-full mt-2 shadow-lg shadow-orange-300' 
-            onClick={renderProps.onClick} disabled={renderProps.disabled}><GoogleIcon/> Google</button>
+            <button className='bg-slate-200 h-10 rounded-2xl font-bold w-full mt-2 shadow-lg shadow-orange-300'
+              onClick={renderProps.onClick} disabled={renderProps.disabled}><GoogleIcon /> Google</button>
           )}
           buttonText="Login"
           onSuccess={responseSuccessGoogle}
@@ -98,7 +102,9 @@ const Login = () => {
           cookiePolicy={'single_host_origin'}
         />
       </div>
-
+<div>
+  
+</div>
 
     </div>
   )
