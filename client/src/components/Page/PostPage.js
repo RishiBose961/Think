@@ -106,7 +106,7 @@ const PostPage = () => {
                   <div className='mx-2 mb-1'>
                     | {
                       speaking ? <VoiceOverOffRoundedIcon onClick={cancel} /> :
-                        <RecordVoiceOverIcon onClick={() => speak({ text: `${inpval.title}.. ${inpval.description}`, voice })} />
+                        <RecordVoiceOverIcon onClick={() => speak({ text: `Title-${inpval.title}.. Description-${inpval.description}....We have Completed the reading`, voice })} />
                     }
                   <select
                   className='w-20 mt-1 ml-4 mr-2'  
