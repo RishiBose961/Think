@@ -5,6 +5,8 @@ const INITIAL_STATE = {
   user: [],
   isLoggedIn: false,
   token: "",
+  followers: [],
+  followings: []
 };
 
 export const AuthContext = createContext(INITIAL_STATE);

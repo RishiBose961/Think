@@ -23,6 +23,13 @@ const AuthReducer = (state, action) => {
 
         }],
       };
+      case "UPDATE":
+      return {
+        ...state,
+        followers: action.payload.followers,
+        followings: action.payload.followings
+      };
+      
     case "SIGNOUT":
       return {
         ...state,

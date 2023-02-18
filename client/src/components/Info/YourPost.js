@@ -32,7 +32,6 @@ const YourPost = () => {
             setLoading(true)
         }, 2000)
     }, [])
-    // console.log(data);
 
 
     const deletePost = (profileId) => {

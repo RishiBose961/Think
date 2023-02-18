@@ -25,7 +25,7 @@ const Lnav = () => {
     }
 
   return (
-    <div className={`bg-stone-300 h-64 rounded-2xl ${open ? "h-auto" : "h-10 pt-2"} mb-3 `}>
+    <div className={`bg-stone-300 h-64 rounded-2xl ${open ? "h-auto" : "h-11 pt-2"} mb-3 `}>
       <div className={`pt-6  ${!open && "hidden"}`}>
         <p className='text-lg font-semibold cursor-pointer hover:bg-amber-400 rounded-xl'><HomeIcon sx={{ mb: 1 }} />Home</p>
         <Link to='/personal'><p className='text-lg font-semibold cursor-pointer hover:bg-amber-400 rounded-xl'><InfoIcon sx={{ mb: 1 }} />Personal</p></Link>

@@ -134,7 +134,7 @@ const userController = {
             .populate("postedBy", "username avatar companyname followers following")
             .sort({ createdAt: -1 })
             .then(posts => {
-                res.json({ posts})
+                res.json({ posts })
             })
             .catch(err => {
                 console.log(err);
@@ -263,45 +263,43 @@ const userController = {
             })
     },
 
-
-
-    // followuser: async(req, res)=>{
-    //     User.findByIdAndUpdate(req.body.followId,{
-    //         $push:{followers:req.user.id}
-    //     },{new:true},(err,result)=>{
-    //         if (err) {
-    //             return res.status(422).json({error:err})
-    //         }
-    //         User.findByIdAndUpdate(req.user.id,{
-    //             $push:{following:req.body.followId}
-    //         },{new:true}).select("-password")
-    //         .exec((err, result) => {
-    //             if (err) {
-    //                 return res.status(422).json({ error: err })
-    //             }
-    //             else {
-    //                 res.json(result)
-    //             }
-    //         })
-    //     })
-    // },
-    // unfollowuser: (req, res)=>{
-    //     User.findByIdAndUpdate(req.body.unfollowId,{
-    //         $pull:{followers:req.user.id}
-    //     },{new:true},(err,results)=>{
-    //         if (err) {
-    //             return res.status(422).json({error:err})
-    //         }
-    //         User.findByIdAndUpdate(req.user.id,{
-    //             $pull:{following:req.body.unfollowId}
-    //         },{new:true}).select("-password")
-    //         .then(results=>{
-    //             res.status(200).json(results)
-    //         }).catch(err=>{
-    //             return res.status(422).json({error:err})
-    //         })
-    //     })
-    // },
+    followuser: async(req, res)=>{
+        User.findByIdAndUpdate(req.body.followId,{
+            $push:{followers:req.user.id}
+        },{new:true},(err,result)=>{
+            if (err) {
+                return res.status(422).json({error:err})
+            }
+            User.findByIdAndUpdate(req.user.id,{
+                $push:{following:req.body.followId}
+            },{new:true}).select("-password")
+            .exec((err, result) => {
+                if (err) {
+                    return res.status(422).json({ error: err })
+                }
+                else {
+                    res.json(result)
+                }
+            })
+        })
+    },
+    unfollowuser: (req, res)=>{
+        User.findByIdAndUpdate(req.body.unfollowId,{
+            $pull:{followers:req.user.id}
+        },{new:true},(err,results)=>{
+            if (err) {
+                return res.status(422).json({error:err})
+            }
+            User.findByIdAndUpdate(req.user.id,{
+                $pull:{following:req.body.unfollowId}
+            },{new:true}).select("-password")
+            .then(results=>{
+                res.status(200).json(results)
+            }).catch(err=>{
+                return res.status(422).json({error:err})
+            })
+        })
+    },
 
     SpecificPost: async (req, res) => {
         const keyword = req.query.search
@@ -315,29 +313,26 @@ const userController = {
         res.send(posts);
     },
 
-    
+    //get following user 
 
-    // createOpenaiPost: async (req, res) => {
+    // FriendFollowing: async (req, res) => {
     //     try {
-    //         const { title, category, createdby, imageopenai, description } = req.body
-    //         if (!title || !category || !createdby || !description) {
-    //             return res.status(402).json({ error: "Plz add all the fields" })
-    //         }
-
-    //         const post = new Post({
-    //             title,
-    //             category,
-    //             createdby,
-    //             thumbnail,
-    //             description,
-    //             postedBy: req.user.id
-    //         })
-    //         post.save().then(posts => {
-    //             res.json({ post: posts })
-    //         }).catch(error => console.log(error))
+    //         //get info  -password
+    //         const user = await User.find({$in:req.user.following})
+    //         //return user
+    //         res.status(200).json(user);
     //     } catch (error) {
     //         res.status(500).json({ message: error.message })
     //     }
+    // },
+
+    // FriendFollowing: async (req, res) => {
+    //     User.find({$in:req.user.following})
+    //     .populate("_id name")
+    //     .then(posts =>{
+    //         res.json(posts)
+    //     })
+    //     .catch(err=>{console.log(err);})
     // },
 
     google: async (req, res) => {

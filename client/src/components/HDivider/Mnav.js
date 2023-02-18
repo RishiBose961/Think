@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Avatar from '@mui/material/Avatar';
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { Scrollbars } from 'react-custom-scrollbars-2';
@@ -195,11 +194,13 @@ const Mnav = () => {
                       <span className='mt-2 mx-2'>{post.postedBy.companyname}</span>
                     </div>
                     {/* </Link> */}
-                    <div>
+                    <div className='ring-2 w-32 ring-black rounded-3xl h-9 '>
                       {
                         isLoggedIn === true ? <>
                           {post.likes.includes(user._id) ? <>
-                            <ThumbUpIcon sx={{ mx: 1 }} className="cursor-pointer" color="error" onClick={() => { unlikePost(post._id) }} />
+                            <ThumbUpIcon sx={{ mx: 1 }} 
+                            className="cursor-pointer" 
+                            color="error" onClick={() => { unlikePost(post._id) }} />
                             <Snackbar
                               open={openUNLIKE}
                               autoHideDuration={3000}
@@ -208,7 +209,8 @@ const Mnav = () => {
                             />
                           </>
                             : <>
-                              <ThumbUpOffAltIcon sx={{ mx: 1 }} className="cursor-pointer" onClick={() => { likePost(post._id) }} />
+                              <ThumbUpOffAltIcon sx={{ mx: 1 }} 
+                              className="cursor-pointer" onClick={() => { likePost(post._id) }} />
                               <Snackbar
                                 open={opens}
                                 autoHideDuration={2000}
@@ -216,12 +218,12 @@ const Mnav = () => {
                                 message={`Like the Post ${post.postedBy.companyname}`}
                               />
                             </>
-                          }<span>{formatter.format(post.likes.length)}</span>
+                          }<span className='mr-3 '>{formatter.format(post.likes.length)}</span>|
+                          <Link to={`postview/${post._id}`}><ExitToAppIcon fontSize='large' color='info' className='cursor-pointer' /></Link>
                         </> : <LoginRegister />
+                        
                       }
-                    
-                      <PlaylistAddIcon fontSize='large' sx={{ mx: 1 }} />
-                      <Link to={`postview/${post._id}`}><ExitToAppIcon fontSize='large' color='info' className='cursor-pointer' /></Link>
+                     
                     
                     </div>
                   </div>
@@ -267,11 +269,13 @@ const Mnav = () => {
                       <span className='mt-2 mx-2'>{post.postedBy.companyname}</span>
                     </div>
                     {/* </Link> */}
-                    <div>
+                    <div className='ring-2 w-32 ring-black rounded-3xl h-9'>
                       {
                         isLoggedIn === true ? <>
                           {post.likes.includes(user._id) ? <>
-                            <ThumbUpIcon sx={{ mx: 1 }} className="cursor-pointer" color="error" onClick={() => { unlikePosts(post._id) }} />
+                            <ThumbUpIcon sx={{ mx: 1 }} 
+                            className="cursor-pointer" 
+                            color="error" onClick={() => { unlikePosts(post._id) }} />
                             <Snackbar
                               open={openUNLIKE}
                               autoHideDuration={3000}
@@ -280,7 +284,8 @@ const Mnav = () => {
                             />
                           </>
                             : <>
-                              <ThumbUpOffAltIcon sx={{ mx: 1 }} className="cursor-pointer" onClick={() => { likePosts(post._id) }} />
+                              <ThumbUpOffAltIcon sx={{ mx: 1 }} 
+                              className="cursor-pointer" onClick={() => { likePosts(post._id) }} />
                               <Snackbar
                                 open={opens}
                                 autoHideDuration={2000}
@@ -288,11 +293,11 @@ const Mnav = () => {
                                 message={`Like the Post ${post.postedBy.companyname}`}
                               />
                             </>
-                          }<span>{formatter.format(post.likes.length)}</span>
+                          }<span className='mr-3'>{formatter.format(post.likes.length)}</span>|
+                          <Link to={`postview/${post._id}`}><ExitToAppIcon fontSize='large' color='info' className='cursor-pointer' /></Link>
                         </> : <LoginRegister />
                       }
-                      <PlaylistAddIcon fontSize='large' sx={{ mx: 1 }} />
-                      <Link to={`postview/${post._id}`}><ExitToAppIcon fontSize='large' color='info' className='cursor-pointer' /></Link>
+                    
                     </div>
                   </div>
 

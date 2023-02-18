@@ -4,13 +4,13 @@ import YourPost from './YourPost'
 import { TabTitle } from '../NewTab/GenerateTitle'
 import { Link } from 'react-router-dom'
 import Adsvistment from '../../Ads/Adsvistment'
+import SearchUser from './SearchUser'
 
 
 const Info = () => {
   TabTitle('Personal - Think')
 
   const { user } = React.useContext(AuthContext)
-
 
   return (
     <div>
@@ -24,11 +24,11 @@ const Info = () => {
         <p className='ring-2 ring-amber-400 text-center text-xl rounded-2xl hover:bg-amber-200'>{user.companyname}</p>
         <p className='ring-2 ring-amber-400 text-center text-xl rounded-2xl hover:bg-red-400'>{user.email}</p>
       </div>
+      <div className='flex justify-center mt-3'>
+      <p className='text-xl mx-1'>Followers {user.followers?.length}</p>
+        <p className='text-xl mx-2'>Following {user.following?.length}</p>
+      </div>
       <div className='flex justify-end mt-3'>
-        <Link to='/update/v1/info'>
-          <button className='bg-red-400 w-24 h-10 rounded-2xl hover:bg-amber-300'>Update..</button>
-        </Link>
-
         <Link to='#'>
           <Adsvistment />
         </Link>
