@@ -1,4 +1,4 @@
-const {Schema, model,mongoose} = require('mongoose')
+const { Schema, model, mongoose } = require('mongoose')
 
 
 const userSchema = new Schema({
@@ -12,18 +12,26 @@ const userSchema = new Schema({
         required: true,
         unique: true,
     },
-    avatar:{
+    avatar: {
         type: String,
     },
-    companyname:{
+    companyname: {
         type: String,
     },
     password: {
         type: String,
         required: true
     },
-},{timestamps: true})
+    followers: {
+        type: Array,
+        default: [],
+    },
+    following: {
+        type: Array,
+        default: [],
+    },
+}, { timestamps: true })
 
-const User = model("User",userSchema)
+const User = model("User", userSchema)
 
 module.exports = User

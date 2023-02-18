@@ -9,6 +9,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import VoiceOverOffRoundedIcon from '@mui/icons-material/VoiceOverOffRounded';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
+
 
 const PostPage = () => {
   TabTitle("Trend Post - Think")
@@ -124,7 +126,7 @@ const PostPage = () => {
                       </option>
                     ))}
                   </select>
-              
+                  | <PlaylistAddIcon className="hover:bg-amber-400 rounded-xl w-32 cursor-defaul"/>
                   </div>
                 </div>
                
