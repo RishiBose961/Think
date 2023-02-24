@@ -25,7 +25,7 @@ const Navpre = () => {
 
   // console.log(data);
   return (
-    <div>
+    <div className='mt-2'>
       <Swiper
         slidesPerView={3}
         spaceBetween={30}

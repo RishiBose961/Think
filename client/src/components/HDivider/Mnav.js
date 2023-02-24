@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useId, useState } from 'react'
 import Avatar from '@mui/material/Avatar';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
@@ -21,6 +21,8 @@ const Mnav = () => {
   const [datas, setDatas] = React.useState([])
   const [opens, setOpens] = React.useState(false);
   const [openUNLIKE, setopenUNLIKE] = React.useState(false);
+
+  const id = useId()
 
   const getPosts = async () => {
     const res = await fetch('/api/auth/getallpost');
@@ -77,7 +79,7 @@ const Mnav = () => {
         console.log(err)
       })
   }
- //like the post from the from .slice(4)
+  //like the post from the from .slice(4)
   const likePosts = (id) => {
     fetch('/api/auth/like', {
       method: "put",
@@ -180,9 +182,9 @@ const Mnav = () => {
     <>
       {loading ? <Scrollbars style={{ width: 'auto', height: 950 }}>
         {
-          data.map((post, index) => {
+          data.map((post, id) => {
             return (
-              <div className='bg-stone-300 rounded-xl mb-5' key={index}>
+              <div className='bg-gradient-to-r from-amber-200 to-white rounded-xl mb-5' key={id}>
                 <div className='mx-2 pt-2 pb-2'>
                   <img src={post.thumbnail}
                     alt='loading' className='rounded-xl w-full h-96 mb-2 ring-1 ring-zinc-900' loading='lazy' />
@@ -198,9 +200,9 @@ const Mnav = () => {
                       {
                         isLoggedIn === true ? <>
                           {post.likes.includes(user._id) ? <>
-                            <ThumbUpIcon sx={{ mx: 1 }} 
-                            className="cursor-pointer" 
-                            color="error" onClick={() => { unlikePost(post._id) }} />
+                            <ThumbUpIcon sx={{ mx: 1 }}
+                              className="cursor-pointer"
+                              color="error" onClick={() => { unlikePost(post._id) }} />
                             <Snackbar
                               open={openUNLIKE}
                               autoHideDuration={3000}
@@ -209,8 +211,8 @@ const Mnav = () => {
                             />
                           </>
                             : <>
-                              <ThumbUpOffAltIcon sx={{ mx: 1 }} 
-                              className="cursor-pointer" onClick={() => { likePost(post._id) }} />
+                              <ThumbUpOffAltIcon sx={{ mx: 1 }}
+                                className="cursor-pointer" onClick={() => { likePost(post._id) }} />
                               <Snackbar
                                 open={opens}
                                 autoHideDuration={2000}
@@ -219,12 +221,12 @@ const Mnav = () => {
                               />
                             </>
                           }<span className='mr-3 '>{formatter.format(post.likes.length)}</span>|
-                          <Link to={`postview/${post._id}`}><ExitToAppIcon fontSize='large' color='info' className='cursor-pointer' /></Link>
+                          <Link to={`postview/${post._id}`}>
+                            <ExitToAppIcon fontSize='large' color='info' className='cursor-pointer' /></Link>
                         </> : <LoginRegister />
-                        
+
                       }
-                     
-                    
+
                     </div>
                   </div>
 
@@ -238,7 +240,7 @@ const Mnav = () => {
                         <p>{post.description.substring(0, 115)}
                           <Link to={`postview/${post._id}`}><span className='text-sm cursor-pointer underline ml-3 underline-offset-3 text-red-500'>Read More..</span></Link></p>
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -246,18 +248,18 @@ const Mnav = () => {
             )
           })
         }
-        <hr/>
+        <hr />
         <div className='flex justify-start'>
           <p className='text-[24px] font-bold'>Trending</p>
         </div>
         <div className='flex justify-start'>
           <MessageTrending />
         </div>
-        <hr/>
+        <hr />
         {
           datas.map((post, index) => {
             return (
-              <div className='bg-stone-300 rounded-xl mb-5 mt-4' key={index}>
+              <div className='bg-gradient-to-r from-amber-200 to-white rounded-xl mb-5 mt-4' key={index}>
                 <div className='mx-2 pt-2 pb-2'>
                   <img src={post.thumbnail}
                     alt='loading' className='rounded-xl w-full h-96 mb-2 ring-1 ring-zinc-900' loading='lazy' />
@@ -273,9 +275,9 @@ const Mnav = () => {
                       {
                         isLoggedIn === true ? <>
                           {post.likes.includes(user._id) ? <>
-                            <ThumbUpIcon sx={{ mx: 1 }} 
-                            className="cursor-pointer" 
-                            color="error" onClick={() => { unlikePosts(post._id) }} />
+                            <ThumbUpIcon sx={{ mx: 1 }}
+                              className="cursor-pointer"
+                              color="error" onClick={() => { unlikePosts(post._id) }} />
                             <Snackbar
                               open={openUNLIKE}
                               autoHideDuration={3000}
@@ -284,8 +286,8 @@ const Mnav = () => {
                             />
                           </>
                             : <>
-                              <ThumbUpOffAltIcon sx={{ mx: 1 }} 
-                              className="cursor-pointer" onClick={() => { likePosts(post._id) }} />
+                              <ThumbUpOffAltIcon sx={{ mx: 1 }}
+                                className="cursor-pointer" onClick={() => { likePosts(post._id) }} />
                               <Snackbar
                                 open={opens}
                                 autoHideDuration={2000}
@@ -297,7 +299,7 @@ const Mnav = () => {
                           <Link to={`postview/${post._id}`}><ExitToAppIcon fontSize='large' color='info' className='cursor-pointer' /></Link>
                         </> : <LoginRegister />
                       }
-                    
+
                     </div>
                   </div>
 
