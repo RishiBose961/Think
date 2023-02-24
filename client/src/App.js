@@ -17,6 +17,7 @@ import Errors from './components/404/error';
 import UpdateInfo from './components/Info/UpdateInfo';
 import AdvistPage from './Ads/AdvistPage';
 import WellBring from './Wellbrings/WellBring';
+import Headers from './components/Header/Headers';
 
 
 
@@ -53,23 +54,24 @@ function App() {
   }, [dispatch, token])
 
   return (
-    <div className='container mx-auto'>
+    <div>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/posts' element={isLoggedIn === true ? <Post /> : <LoginRegister />} />
-          <Route path='/fav' element={isLoggedIn === true ? <Favorite /> : <LoginRegister />} />
-          <Route path='/search' element={isLoggedIn === true ? <Search /> : <LoginRegister />} />
-          <Route path='/personal' element={isLoggedIn === true ? <Info /> : <LoginRegister />} />
-          <Route path='/postview/:id' element={isLoggedIn === true ? <PostPage /> : <LoginRegister />} />
-          <Route path='/usersearch/:id' element={isLoggedIn === true ? <SearchUser /> : <LoginRegister />} />
-          <Route path='/updateinfo' element={isLoggedIn === true ? <UpdateInfo /> : <LoginRegister />} />
-          <Route path='/ads' element={isLoggedIn === true ? <AdvistPage /> : <LoginRegister />} />
-          <Route path='/wellbring' element={isLoggedIn === true ? <WellBring /> : <LoginRegister />} />
-          <Route path='*' element={<Errors />} />
-        </Routes>
-
+        <Headers />
+        <div className='container mx-auto'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/posts' element={isLoggedIn === true ? <Post /> : <LoginRegister />} />
+            <Route path='/fav' element={isLoggedIn === true ? <Favorite /> : <LoginRegister />} />
+            <Route path='/search' element={isLoggedIn === true ? <Search /> : <LoginRegister />} />
+            <Route path='/personal' element={isLoggedIn === true ? <Info /> : <LoginRegister />} />
+            <Route path='/postview/:id' element={isLoggedIn === true ? <PostPage /> : <LoginRegister />} />
+            <Route path='/usersearch/:id' element={isLoggedIn === true ? <SearchUser /> : <LoginRegister />} />
+            <Route path='/updateinfo' element={isLoggedIn === true ? <UpdateInfo /> : <LoginRegister />} />
+            <Route path='/ads' element={isLoggedIn === true ? <AdvistPage /> : <LoginRegister />} />
+            <Route path='/wellbring' element={isLoggedIn === true ? <WellBring /> : <LoginRegister />} />
+            <Route path='*' element={<Errors />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </div>
   );

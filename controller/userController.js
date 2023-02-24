@@ -315,17 +315,44 @@ const userController = {
 
     //get following user 
 
-    // FriendFollowing: async (req, res) => {
-    //     try {
-    //         //get info  -password
-    //         const user = await User.find({$in:req.user.following})
-    //         //return user
-    //         res.status(200).json(user);
-    //     } catch (error) {
-    //         res.status(500).json({ message: error.message })
-    //     }
-    // },
 
+
+    FriendFollowing: async (req, res) => {
+        try {
+            const user = await User.findById(req.params.userId);
+            const friends = await Promise.all(
+              user.following.map((friendId) => {
+                return User.findById(friendId);
+              })
+            );
+            let friendList = [];
+            friends.map((friend) => {
+              const { _id, username,avatar,email } = friend;
+              friendList.push({ _id, username,avatar,email });
+            });
+            res.status(200).json(friendList)
+          } catch (err) {
+            res.status(500).json(err)
+        }
+    },
+    FriendFollowers: async (req, res) => {
+        try {
+            const user = await User.findById(req.params.userId);
+            const friends = await Promise.all(
+              user.followers.map((friendId) => {
+                return User.findById(friendId);
+              })
+            );
+            let friendLists = [];
+            friends.map((friend) => {
+              const { _id, username,avatar,email } = friend;
+              friendLists.push({ _id, username,avatar,email });
+            });
+            res.status(200).json(friendLists)
+          } catch (err) {
+            res.status(500).json(err)
+        }
+    },
     // FriendFollowing: async (req, res) => {
     //     User.find({$in:req.user.following})
     //     .populate("_id name")

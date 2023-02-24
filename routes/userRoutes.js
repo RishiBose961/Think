@@ -21,6 +21,8 @@ route.delete('/api/auth/deletepost/:profileId',auth, userController.deleteprofil
 route.get('/api/auth/getpost',userController.SpecificPost)
 route.put('/api/auth/follow',auth,userController.followuser)
 route.put('/api/auth/unfollow',auth,userController.unfollowuser)
+route.get('/api/auth/friendfollowing/:userId',auth,userController.FriendFollowing)
+route.get('/api/auth/friendfollowers/:userId',auth,userController.FriendFollowers)
 route.post('/api/auth/google_signing',userController.google);
 route.get('/api/auth/signout', userController.signout);
 
