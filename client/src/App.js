@@ -1,7 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import { AuthContext } from './context/AuthContext';
 import axios from 'axios';
@@ -18,6 +17,7 @@ import UpdateInfo from './components/Info/UpdateInfo';
 import AdvistPage from './Ads/AdvistPage';
 import WellBring from './Wellbrings/WellBring';
 import Headers from './components/Header/Headers';
+import Chatapp from './chat/Chatapp';
 
 
 
@@ -68,6 +68,7 @@ function App() {
             <Route path='/usersearch/:id' element={isLoggedIn === true ? <SearchUser /> : <LoginRegister />} />
             <Route path='/updateinfo' element={isLoggedIn === true ? <UpdateInfo /> : <LoginRegister />} />
             <Route path='/ads' element={isLoggedIn === true ? <AdvistPage /> : <LoginRegister />} />
+            <Route path='/chats' element={isLoggedIn === true ? <Chatapp /> : <LoginRegister />} />
             <Route path='/wellbring' element={isLoggedIn === true ? <WellBring /> : <LoginRegister />} />
             <Route path='*' element={<Errors />} />
           </Routes>

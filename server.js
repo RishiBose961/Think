@@ -3,6 +3,8 @@ const mongoose = require('mongoose')
 const express = require('express');
 const userController = require('./controller/userController');
 const userRoutes = require('./routes/userRoutes');
+const conversationRoutes = require('./routes/ConversationRoute')
+const MessageRoutes = require('./routes/MessageRoute')
 const app = express();
 const path = require('path');
 require("dotenv").config();
@@ -27,6 +29,9 @@ express.urlencoded({ extended: true })
 app.use(cookieParser())
 
 app.use(userRoutes)
+app.use(conversationRoutes)
+app.use(MessageRoutes)
+
 
 
 

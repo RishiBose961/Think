@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.37a3b138.css",
-    "main.js": "/static/js/main.1dddd0d4.js",
+    "main.css": "/static/css/main.692149dd.css",
+    "main.js": "/static/js/main.48d2cf1b.js",
+    "service-worker.js": "/service-worker.js",
     "static/media/android-chrome-512x512.png": "/static/media/android-chrome-512x512.6258c60a80f25c5faabf.png",
     "index.html": "/index.html",
-    "main.37a3b138.css.map": "/static/css/main.37a3b138.css.map",
-    "main.1dddd0d4.js.map": "/static/js/main.1dddd0d4.js.map"
+    "main.692149dd.css.map": "/static/css/main.692149dd.css.map",
+    "main.48d2cf1b.js.map": "/static/js/main.48d2cf1b.js.map"
   },
   "entrypoints": [
-    "static/css/main.37a3b138.css",
-    "static/js/main.1dddd0d4.js"
+    "static/css/main.692149dd.css",
+    "static/js/main.48d2cf1b.js"
   ]
 }
