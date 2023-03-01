@@ -263,41 +263,41 @@ const userController = {
             })
     },
 
-    followuser: async(req, res)=>{
-        User.findByIdAndUpdate(req.body.followId,{
-            $push:{followers:req.user.id}
-        },{new:true},(err,result)=>{
+    followuser: async (req, res) => {
+        User.findByIdAndUpdate(req.body.followId, {
+            $push: { followers: req.user.id }
+        }, { new: true }, (err, result) => {
             if (err) {
-                return res.status(422).json({error:err})
+                return res.status(422).json({ error: err })
             }
-            User.findByIdAndUpdate(req.user.id,{
-                $push:{following:req.body.followId}
-            },{new:true}).select("-password")
-            .exec((err, result) => {
-                if (err) {
-                    return res.status(422).json({ error: err })
-                }
-                else {
-                    res.json(result)
-                }
-            })
+            User.findByIdAndUpdate(req.user.id, {
+                $push: { following: req.body.followId }
+            }, { new: true }).select("-password")
+                .exec((err, result) => {
+                    if (err) {
+                        return res.status(422).json({ error: err })
+                    }
+                    else {
+                        res.json(result)
+                    }
+                })
         })
     },
-    unfollowuser: (req, res)=>{
-        User.findByIdAndUpdate(req.body.unfollowId,{
-            $pull:{followers:req.user.id}
-        },{new:true},(err,results)=>{
+    unfollowuser: (req, res) => {
+        User.findByIdAndUpdate(req.body.unfollowId, {
+            $pull: { followers: req.user.id }
+        }, { new: true }, (err, results) => {
             if (err) {
-                return res.status(422).json({error:err})
+                return res.status(422).json({ error: err })
             }
-            User.findByIdAndUpdate(req.user.id,{
-                $pull:{following:req.body.unfollowId}
-            },{new:true}).select("-password")
-            .then(results=>{
-                res.status(200).json(results)
-            }).catch(err=>{
-                return res.status(422).json({error:err})
-            })
+            User.findByIdAndUpdate(req.user.id, {
+                $pull: { following: req.body.unfollowId }
+            }, { new: true }).select("-password")
+                .then(results => {
+                    res.status(200).json(results)
+                }).catch(err => {
+                    return res.status(422).json({ error: err })
+                })
         })
     },
 
@@ -321,17 +321,17 @@ const userController = {
         try {
             const user = await User.findById(req.params.userId);
             const friends = await Promise.all(
-              user.following.map((friendId) => {
-                return User.findById(friendId);
-              })
+                user.following.map((friendId) => {
+                    return User.findById(friendId);
+                })
             );
             let friendList = [];
             friends.map((friend) => {
-              const { _id, username,avatar,email } = friend;
-              friendList.push({ _id, username,avatar,email });
+                const { _id, username, avatar, email } = friend;
+                friendList.push({ _id, username, avatar, email });
             });
             res.status(200).json(friendList)
-          } catch (err) {
+        } catch (err) {
             res.status(500).json(err)
         }
     },
@@ -339,28 +339,51 @@ const userController = {
         try {
             const user = await User.findById(req.params.userId);
             const friends = await Promise.all(
-              user.followers.map((friendId) => {
-                return User.findById(friendId);
-              })
+                user.followers.map((friendId) => {
+                    return User.findById(friendId);
+                })
             );
             let friendLists = [];
             friends.map((friend) => {
-              const { _id, username,avatar,email } = friend;
-              friendLists.push({ _id, username,avatar,email });
+                const { _id, username, avatar, email } = friend;
+                friendLists.push({ _id, username, avatar, email });
             });
             res.status(200).json(friendLists)
-          } catch (err) {
+        } catch (err) {
             res.status(500).json(err)
         }
     },
-    // FriendFollowing: async (req, res) => {
-    //     User.find({$in:req.user.following})
-    //     .populate("_id name")
-    //     .then(posts =>{
-    //         res.json(posts)
-    //     })
-    //     .catch(err=>{console.log(err);})
-    // },
+    FriendsChat: async (req, res) => {
+        try {
+            const user = await User.findById(req.params.userId);
+            const friends = await Promise.all(
+                user.following.map((friendId) => {
+                    return User.findById(friendId);
+                })
+            );
+            let friendList = [];
+            friends.map((friend) => {
+                const { _id, username, avatar } = friend;
+                friendList.push({ _id, username, avatar });
+            });
+            res.status(200).json(friendList)
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
+    getusermessage: async (req, res) => {
+        const userId = req.query.userId;
+        const username = req.query.username;
+        try {
+            const user = userId
+                ? await User.findById(userId)
+                : await User.findOne({ username: username });
+            const { password, ...other } = user._doc;
+            res.status(200).json(other);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
 
     google: async (req, res) => {
         try {
@@ -422,11 +445,8 @@ const userController = {
         } catch (error) {
             res.status(500).json({ msg: error.message });
         }
-
-
-
-
     },
+
     signout: async (req, res) => {
         try {
             res.clearCookie("_apprftoken", { path: "/api/auth/access" })
